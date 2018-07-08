@@ -1,0 +1,32 @@
+{
+  "name": "repoinfo",
+  "version": "1.0.0",
+  "description": "Retrieves information about the current state of the repository",
+  "main": "dist/index.js",
+  "scripts": {
+    "lint": "cross-env NODE_PATH=./ eslint src; exit 0",
+    "build": "babel src --out-dir dist"
+  },
+  "keywords": [],
+  "author": "Michiel Sikma <michiel@sikma.org> (https://michielsikma.com/)",
+  "license": "MIT",
+  "repository": {
+    "type" : "git",
+    "url" : "https://github.com/msikma/repoinfo.git"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "babel-eslint": "^8.2.5",
+    "babel-plugin-transform-class-properties": "^6.24.1",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-polyfill": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
+    "babel-register": "^6.26.0",
+    "eslint": "^5.0.1",
+    "eslint-config-airbnb": "^17.0.0",
+    "eslint-plugin-import": "^2.13.0",
+    "eslint-plugin-jsx-a11y": "^6.1.0",
+    "eslint-plugin-react": "^7.10.0"
+  }
+}
