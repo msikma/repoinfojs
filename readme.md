@@ -1,11 +1,11 @@
 [![npm version](https://badge.fury.io/js/repoinfo.svg)](https://badge.fury.io/js/repoinfo) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-## RepoInfo - Simple repository information function
+## RepoInfoJS - Simple repository information function
 
 Usage:
 
 ```js
-import getRepoInfo from 'repoinfo'
+import getRepoInfo from 'repoinfojs'
 
 const info = await getRepoInfo()
 console.log(info)
@@ -26,6 +26,8 @@ You can pass one additional argument:
 For example:
 
 ```js
+import getRepoInfo from 'repoinfojs'
+
 const info = await getRepoInfo(['-n', '-m'])
 console.log(info)
 

@@ -1,5 +1,5 @@
 {
-  "name": "repoinfo",
+  "name": "repoinfojs",
   "version": "1.0.0",
   "description": "Retrieves information about the current state of the repository",
   "main": "dist/index.js",
