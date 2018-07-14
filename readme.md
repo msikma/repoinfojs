@@ -1,4 +1,4 @@
-[![npm version](https://badge.fury.io/js/repoinfo.svg)](https://badge.fury.io/js/repoinfo) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![npm version](https://badge.fury.io/js/repoinfojs.svg)](https://badge.fury.io/js/repoinfojs) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 ## RepoInfoJS - Simple repository information function
 
