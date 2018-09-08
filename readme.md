@@ -16,7 +16,9 @@ console.log(info)
    branch: 'master',
    hash: 'b5508f6',
    hashFull: 'b5508f67e32948b49dcd9b3c2dd1e0afe53bbf89',
-   commits: '1' } */
+   commits: '1',
+   lastCommit: 'Tue, 4 Sep 2018 00:21:53 +0200',
+   lastCommitRel: '5 days ago' } */
 ```
 
 You can pass one additional argument:
@@ -38,6 +40,8 @@ console.log(info)
    hash: 'b5508f6',
    hashFull: 'b5508f67e32948b49dcd9b3c2dd1e0afe53bbf89',
    commits: '1',
+   lastCommit: 'Tue, 4 Sep 2018 00:21:53 +0200',
+   lastCommitRel: '5 days ago',
    uname: [ 'Vesuvius.local', 'x86_64' ] } */
 ```
 

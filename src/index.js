@@ -12,6 +12,8 @@ const fallback = (uname = []) => ({
   hash: null,
   hashFull: null,
   commits: null,
+  lastCommit: null,
+  lastCommitRel: null,
   ...(uname != null && uname.length > 0 ? { uname: null } : {})
 })
 
@@ -34,11 +36,13 @@ const getRepoInfo = async (uname = []) => {
 const runRepoExec = async (uname = []) => {
   const unameIsArr = Array.isArray(uname)
   const unameArr = unameIsArr ? uname : [uname]
-  const [branch, hash, hashFull, commits] = await Promise.all([
+  const [branch, hash, hashFull, commits, lastCommit, lastCommitRel] = await Promise.all([
     callExternal('git describe --all | sed s@heads/@@'),
     callExternal('git rev-parse --short head'),
     callExternal('git rev-parse head'),
-    callExternal('git rev-list head --count')
+    callExternal('git rev-list head --count'),
+    callExternal('git log -n 1 --date=rfc2822 --pretty=format:%cd'),
+    callExternal('git log -n 1 --date=relative --pretty=format:%cd')
   ])
   const unameResults = uname.length
     ? await Promise.all(unameArr.map(cmd => callExternal(`uname ${cmd}`)))
@@ -50,6 +54,8 @@ const runRepoExec = async (uname = []) => {
     hash,
     hashFull,
     commits,
+    lastCommit,
+    lastCommitRel,
     // Unpack uname if it was an array to begin with.
     ...(uname.length ? { uname: unameIsArr ? unameResults : unameResults[0] } : {})
   }
