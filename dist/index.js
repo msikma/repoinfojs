@@ -36,7 +36,9 @@ var fallback = function fallback() {
     branch: null,
     hash: null,
     hashFull: null,
-    commits: null
+    commits: null,
+    lastCommit: null,
+    lastCommitRel: null
   }, uname != null && uname.length > 0 ? { uname: null } : {});
 };
 
@@ -89,7 +91,7 @@ var runRepoExec = function () {
   var _ref2 = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee2() {
     var uname = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
 
-    var unameIsArr, unameArr, _ref3, _ref4, branch, hash, hashFull, commits, unameResults;
+    var unameIsArr, unameArr, _ref3, _ref4, branch, hash, hashFull, commits, lastCommit, lastCommitRel, unameResults;
 
     return _regenerator2.default.wrap(function _callee2$(_context2) {
       while (1) {
@@ -98,45 +100,49 @@ var runRepoExec = function () {
             unameIsArr = Array.isArray(uname);
             unameArr = unameIsArr ? uname : [uname];
             _context2.next = 4;
-            return _promise2.default.all([callExternal('git describe --all | sed s@heads/@@'), callExternal('git rev-parse --short head'), callExternal('git rev-parse head'), callExternal('git rev-list head --count')]);
+            return _promise2.default.all([callExternal('git describe --all | sed s@heads/@@'), callExternal('git rev-parse --short head'), callExternal('git rev-parse head'), callExternal('git rev-list head --count'), callExternal('git log -n 1 --date=rfc2822 --pretty=format:%cd'), callExternal('git log -n 1 --date=relative --pretty=format:%cd')]);
 
           case 4:
             _ref3 = _context2.sent;
-            _ref4 = (0, _slicedToArray3.default)(_ref3, 4);
+            _ref4 = (0, _slicedToArray3.default)(_ref3, 6);
             branch = _ref4[0];
             hash = _ref4[1];
             hashFull = _ref4[2];
             commits = _ref4[3];
+            lastCommit = _ref4[4];
+            lastCommitRel = _ref4[5];
 
             if (!uname.length) {
-              _context2.next = 16;
+              _context2.next = 18;
               break;
             }
 
-            _context2.next = 13;
+            _context2.next = 15;
             return _promise2.default.all(unameArr.map(function (cmd) {
               return callExternal('uname ' + cmd);
             }));
 
-          case 13:
+          case 15:
             _context2.t0 = _context2.sent;
-            _context2.next = 17;
+            _context2.next = 19;
             break;
 
-          case 16:
+          case 18:
             _context2.t0 = [];
 
-          case 17:
+          case 19:
             unameResults = _context2.t0;
             return _context2.abrupt('return', (0, _extends3.default)({
               formatted: branch + '-' + commits,
               branch: branch,
               hash: hash,
               hashFull: hashFull,
-              commits: commits
+              commits: commits,
+              lastCommit: lastCommit,
+              lastCommitRel: lastCommitRel
             }, uname.length ? { uname: unameIsArr ? unameResults : unameResults[0] } : {}));
 
-          case 19:
+          case 21:
           case 'end':
             return _context2.stop();
         }
